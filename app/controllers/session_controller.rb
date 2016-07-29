@@ -1,16 +1,23 @@
 get '/' do
-	erb:login
+	erb :welcome
 end
-get '/login' do
-	erb :login
+get '/sessions/new' do
+	erb :'sessions/new'
+end 
+
+get '/sessions/delete' do
+  session[:user_id] = nil
+  redirect '/'
 end
 
-post '/login' do
-	user = User.find_by(username: params[:username])
-	if user && user.password == params[:password]
-			redirect '/welcome'
+post '/sessions/new' do
+	@user = User.find_by(username: params[:username])
+	if @user && @user.authenticate(params[:password])
+		session[:user_id] = @user.id
+			redirect '/hello'
 	else
-			redirect '/login'
+			@error = "Your login credentials are wrong, please try again"
+			erb :'/sessions/new'
 	end
 end
 
@@ -18,11 +25,9 @@ get '/welcome' do
 	erb :welcome
 end
 
-get '/users/new' do
-	erb :new
+
+
+get '/hello' do
+	erb :'/hello'
 end
 
-post '/users/new' do
-	user = User.create(username: params[:username], password: params[:password], email: params[:email])
-	redirect '/welcome'
-end

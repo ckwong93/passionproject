@@ -78,6 +78,7 @@ GEM
       thread_safe (~> 0.1)
     xpath (2.0.0)
       nokogiri (~> 1.3)
+    ystock (0.4.14)
 
 PLATFORMS
   ruby
@@ -97,6 +98,7 @@ DEPENDENCIES
   shoulda-matchers
   sinatra
   sinatra-contrib
+  ystock
 
 BUNDLED WITH
    1.12.5

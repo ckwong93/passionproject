@@ -1,0 +1,8 @@
+<h3 class="list-group-item active">Ticker: <%= @stock.ticker %> </h3>
+  <ul>
+  	<li class="list-group-item list-group-item-action">Price: $<%= Ystock.quote(@stock.ticker)[:price] %></li>
+	<li class="list-group-item list-group-item-action">Open: $<%= Ystock.quote(@stock.ticker)[:open] %></li>
+	<li class="list-group-item list-group-item-action">Change: <%= Ystock.quote(@stock.ticker)[:change] %></li>
+	<li class="list-group-item list-group-item-action">% Change: <%= Ystock.quote(@stock.ticker)[:change_percent] %></li>
+	<li class="list-group-item list-group-item-action"><a href="http://www.marketwatch.com/investing/stock/<%=@stock.ticker%>">More info!</a></li>
+  </ul>
