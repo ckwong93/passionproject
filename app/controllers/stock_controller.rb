@@ -1,3 +1,7 @@
+get "/stock/map" do
+	erb :'/stock/map'
+end
+
 get "/stock/new" do
 	@stock = Stock.all
 	if request.xhr?
